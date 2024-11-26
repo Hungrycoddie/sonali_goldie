@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Day message</h1>
+    <label for="day">Select a day:</label>
+    <select onchange="showMessage()" id="day">
+        <option value="">--Choose a day--</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+    </select>
+    <p id="message"></p>
+
+
+<script>
+    function showMessage(){
+       const  day = document.getElementById("day").value;
+       const messageElement = document.getElementById("message");
+       let message;
+       
+       switch (day) {
+        case "Monday":
+        message = "start your week with energy ";
+        break;
+        case "Tuesday":
+        message = "Koodp going strong!"
+        break;
+        case "Wednesday":
+        message = 'Halfway through the weeK!'
+        break;
+        case "Thursday":
+        message = "Almost There"
+        break;
+        case "Friday":
+        message = "Weekend is Near"
+        break;
+        case "Saturday":
+        message = "Enjoy your weekend"
+        break;
+        case "sunday":
+        message = "Rest and Recharge"
+        break;
+        default :
+        message = "please select a day "
+
+       }
+       messageElement.innerHTML=message;
+    }
+</script>
+
+
+</body>
+</html>
