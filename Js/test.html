@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message and Image by Day</title>
+</head>
+<body>
+    <label for="day">Choose a day:</label>
+    <select id="day" onchange="showMessage()">
+        <option value="">--Select a day--</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+    </select>
+    
+    <p id="message"></p>
+    <img id="dayImage" src="" alt="Day Image" style="display: none;" width="300">
+
+    <script src="test.js"></script>
+</body>
+</html>
