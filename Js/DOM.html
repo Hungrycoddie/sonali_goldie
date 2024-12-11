@@ -9,12 +9,49 @@
 
     <h1 id="so">hello sonali</h1>
 
-    <div id="box">container</div>
+    <!-- <div id="box">container</div>
 
     <div id="example">
         Hello, <span style="display: none;">hidden</span> World!
-      </div>
+      </div> -->
+<div id="container">
+    <!-- <p>this is a para</p> -->
+    <p id="toBeRemoved"> this para will bve removed </p>
+</div>
+<!-- <button id="addButton"> Add new Paragraph</button> -->
+
+<button id="RemoveButton"> Remove paragraph</button>
 
     <script src="./DOM.js"></script>
+
+<!-- <script>
+    const container = document.getElementById('container');
+    const addButton = document.getElementById('addButton');
+
+
+    addButton.addEventListener('click',()=> {
+        const newParagraph = document.createElement('p')
+        newParagraph.textContent = "This is a new paragragh"
+        
+        container.appendChild(newParagraph)
+    })
+</script> -->
+<script>
+    const container = document.getElementById('container')
+    const toBeremoved =  document.getElementById('toBeRemoved')
+    const removeButton = document.getElementById('RemoveButton')
+
+
+    removeButton.addEventListener('click', ()=>{
+        if (container.contains(toBeremoved)){
+            container.removeChild(toBeremoved);
+            alert('paragaarapgh will be  removed ')
+        }else {
+            alert('No para was removed')
+        }
+    }) 
+
+</script>
+
 </body>
 </html>

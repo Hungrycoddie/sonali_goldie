@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form events</title>
+</head>
+<body>
+    <h1>Form Handling </h1>
+    <form action="#" id="userForm">
+        <label for="username"> Username : </label>
+        <input type="text" name="username" id="username" required>
+        <label for="name">name</label>
+        <input type="text" name="name">
+        <button  type="submit">Submit</button>
+    </form>
+    sel
+
+    <script>
+        const form = document.getElementById('userForm');
+
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            console.log(`Form data was sent with username :${username}`)
+                })
+    </script>
+</body>
+</html>
