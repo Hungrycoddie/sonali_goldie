@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+
+    <!-- 
+        https://api.github.com/users/Arun-cloud-dev/followers
+     -->
+<ul id="followers-list">
+
+
+</ul>
+
+
+<script>
+
+    
+
+fetch('https://api.githb.com/users/Arun-cloud-dev/followers')
+.then (response =>{
+    if(!response.ok){
+        throw new Error (`Http  error! status : ${response.status}`)
+    }
+    return response.json();
+} )
+.then(data => {
+    console.log("parsed json data: ", data);
+
+    const followersList = document.getElementById("followers-list")
+
+    console.log("fetched follower list element : ", followersList)
+
+
+
+    data.forEach ((follower , index)=> {
+        console.log(`processing follower # ${ index + 1 }:`, follower)
+
+        const listItem = document.createElement('li');
+        listItem.innerHTML= 
+        `<img src="${follower.avatar_url}" alt="${follower.login} width="50">
+        <a href="${follower.html_url}" target="_blank"> ${follower.login}</a>`;
+
+        console.log(`Created list item for ${follower.login} to followers list. `)
+
+    })
+    
+})
+.catch (error => console.log("error Fetching  followers ", error) )
+.finally (()=> {
+    console.log ("finished fetching and processing the data ")
+})
+</script>
+
+
+    
+</body>
+</html>

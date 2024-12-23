@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    <!-- Followers list -->
+    <ul id="followers-list"></ul>
+    <!-- Logs list -->
+    <ul id="logs-list"></ul>
+
+    <script>
+        function logToPage(message) {
+            const logList = document.getElementById('logs-list');
+            const logItem = document.createElement('li');
+            logItem.textContent = message;
+            logList.appendChild(logItem);
+        }
+
+        logToPage("Starting to fetch followers...");
+
+        fetch('https://api.github.com/users/Arun-cloud-dev/followers')
+            .then(response => {
+                logToPage("Received response from API.");
+                if (!response.ok) {
+                    logToPage(`HTTP error! Status: ${response.status}`);
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                logToPage("Parsed JSON data successfully.");
+                logToPage(`Found ${data.length} followers.`);
+                const followersList = document.getElementById("followers-list");
+
+                data.forEach((follower, index) => {
+                    logToPage(`Processing follower #${index + 1}: ${follower.login}`);
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <img src="${follower.avatar_url}" alt="${follower.login}" width="50" 
+                             style="border-radius: 50%; margin-right: 10px;">
+                        <a href="${follower.html_url}" target="_blank">${follower.login}</a>`;
+                    followersList.appendChild(listItem);
+                    logToPage(`Added ${follower.login} to the follower list.`);
+                });
+            })
+            .catch(error => logToPage(`Error fetching followers: ${error.message}`))
+            .finally(() => {
+                logToPage("Finished fetching and processing data.");
+            });
+    </script>
+</body>
+</html>
