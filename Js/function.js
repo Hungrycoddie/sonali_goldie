@@ -19,3 +19,14 @@ prevButton.addEventListener('click', () => {
     index = (index - 1 + images.length) % images.length;
     showImage(index);
 });
+
+
+
+
+function ar (a, b ) {
+    return a+b
+
+}
+
+
+ar(5, 6)
