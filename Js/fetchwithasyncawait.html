@@ -13,43 +13,45 @@
   </ul>
 
   <script>
-    async function fetchFollowers() {
-      const followersList = document.getElementById("followers-list");
-      followersList.innerHTML = "Loading...";
+   
 
-      try {
-        // Fetch data from the GitHub API
-        const response = await fetch("https://api.githb.com/users/Arun-cloud-dev/followers");
+async function fetchFollowers(){
+  const followerList = document.getElementById("followers-list");
+  followerList.innerHTML = "Loading........"
 
-        // Check if the response is successful
-        if (!response.ok) {
-          throw new Error("Failed to fetch followers");
-        }
 
-        const followers = await response.json(); // Parse the response as JSON
+  try{
+    const response = await fetch("https://ap.github.com/users/Arun-cloud-dev/followers")
 
-        // Clear the loading message
-        followersList.innerHTML = "";
-
-        // Display the followers
-        followers.forEach((follower) => {
-          const listItem = document.createElement("li");
-          listItem.innerHTML = `
-            <img src="${follower.avatar_url}" alt="${follower.login}" style="width: 30px; border-radius: 50%; margin-right: 10px;">
-            <a href="${follower.html_url}" target="_blank">${follower.login}</a>
-          `;
-          followersList.appendChild(listItem);
-        });
-
-        // If no followers, show a message
-        if (followers.length === 0) {
-          followersList.innerHTML = "<li>No followers found</li>";
-        }
-      } catch (error) {
-        // Handle errors
-        followersList.innerHTML = `<li style="color: red;">Error: ${error.message}</li>`;
-      }
+    if (!response.ok){
+      throw new Error("Failed to fetch Followers")
     }
+
+    const followers = await response.json();
+
+    followerList.innerHTML = ""
+
+
+    followers.forEach((follower) => {
+      const listItem = document.createElement("li");
+
+
+      listItem.style.marginBottom = "30px";
+     listItem .innerHTML = `
+     <img src="${follower.avatar_url}" alt="${follower.login}" 
+       style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+     <a href="${follower.html_url}" target="_blank" 
+       style="text-decoration: none; color: blue;">${follower.login}</a>
+          `;
+                followerList.appendChild(listItem); 
+              });
+        if (followers.length === 0 ){
+    followerList.innerHtml = "<li>No followers found </li>"
+    }   
+    }catch(error){
+    followerList.innerHTML = `<li> Error : ${error.message}</li>`
+  }
+} 
   </script>
 </body>
 </html>

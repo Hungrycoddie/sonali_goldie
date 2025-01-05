@@ -56,10 +56,28 @@
 
 
 
-// const fruits = "Banana";
+const fruits = "Banana";
 // Object.keys(fruits).forEach(key => {
 //   console.log(`${key}: ${fruits[key]}`);
 // });
+
+
+
+// const keys = Object.keys(fruits);
+
+
+// for (let i = 0 ; i<keys.length; i++){
+//     const key = keys[i] ;
+//     console.log(`${key}: ${fruits [key]}`);
+// }
+
+
+
+
+
+
+
+
 
 
 
