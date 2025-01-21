@@ -1,15 +1,28 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeComponent],
+  imports: [RouterOutlet,FormsModule, ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'portfolio';
+
+  firstName: string = '';
+  lastName: string = '';
 
 
+
+
+  onSubmit() {
+    console.log( 'first Name:', this.firstName);
+    console.log('last Name:',this.lastName)
+
+
+    // console.log('First Name: ' + this.firstName);
+    // console.log('Last Name: ' + thi  s.lastName);
+  }
 }
