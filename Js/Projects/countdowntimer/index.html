@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -37,4 +37,83 @@
         
     
 </body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        #timer {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Countdown Timer</h1>
+    <div id="timer">00d 00h 00m 00s</div>
+    <button id="stopButton">Stop Timer</button>
+
+    <script>
+        let countDown; // Variable to hold the interval
+
+        function startCountdown(targetDate) {
+            countDown = setInterval(() => {
+                const now = new Date().getTime(); // Current time in milliseconds
+                const distance = targetDate - now; // Calculate time remaining
+
+                if (distance <= 0) {
+                    clearInterval(countDown); // Stop the timer
+                    document.getElementById("timer").textContent = "Time's up!";
+                    return;
+                }
+
+                // Calculate days, hours, minutes, and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the timer element
+                document.getElementById("timer").textContent =
+                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+        }
+
+        // Function to stop the countdown
+        function stopCountdown() {
+            clearInterval(countDown); // Stop the interval
+            document.getElementById("timer").textContent = "Timer Stopped!";
+        }
+
+        // Attach event listener to the stop button
+        document.getElementById("stopButton").addEventListener("click", stopCountdown);
+
+        // Set the target date (e.g., 24 hours from now)
+        const targetDate = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours from now
+
+        // Start the countdown
+        startCountdown(targetDate);
+    </script>
+</body>
+
 </html>
